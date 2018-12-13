@@ -16,7 +16,7 @@ class AthleteController extends Controller
     {
         
         $athletes = Athlete::where('state','=','1')
-                    ->orderBy('apellido','ASC')->paginate(10);
+                    ->orderBy('apellido','ASC')->paginate(20);
 
         return view('atleta.index', compact('athletes'));
     }
@@ -49,7 +49,18 @@ class AthleteController extends Controller
         $athlete->genero = $request->genero;
         $athlete->telefono = $request->telefono;
         $athlete->avatar = $request->avatar;
-
+//imagen
+        if($request->file('avatar')) {
+            // Necesito el archivo en una variable esta vez
+            $file = $request->file("avatar");
+            // Armo un nombre único para este archivo
+            $name = $request->apellido . $request->nombre . "." . $file->extension();
+            // carpeta en la que voy a guardar la imagen
+            $folder = "avatar";
+            $path = $file->storeAs($folder, $name);
+            $athlete->avatar = $path;
+        }
+        
         $athlete->save();
 
         return redirect()->route('athlete.index');
@@ -101,6 +112,17 @@ class AthleteController extends Controller
         $athlete->genero = $request->genero;
         $athlete->telefono = $request->telefono;
         $athlete->avatar = $request->avatar;
+//imagen
+        if($request->file('avatar')) {
+            // Necesito el archivo en una variable esta vez
+            $file = $request->file("avatar");
+            // Armo un nombre único para este archivo
+            $name = $request->apellido . $request->nombre . "." . $file->extension();
+            // carpeta en la que voy a guardar la imagen
+            $folder = "avatar";
+            $path = $file->storeAs($folder, $name);
+            $athlete->avatar = $path;
+        }
 
         $athlete->save();
 

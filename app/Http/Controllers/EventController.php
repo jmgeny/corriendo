@@ -15,7 +15,7 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::orderBy('fecha','ASC')->paginate(5);
+        $events = Event::orderBy('fecha','ASC')->paginate(20);
         return view('evento.index',compact('events'));
     }
 
@@ -48,7 +48,7 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        $event = Event::find($id);
+        $event = Event::findOrFail($id);
 
         return view('evento.show',compact('event'));
     }

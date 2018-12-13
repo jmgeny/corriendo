@@ -23,11 +23,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Route::get('/evento/atletas','InicioController@atleta');
 
-Route::get('/evento/buscardni/{id}', 'InicioController@buscardni');
-Route::get('/evento/cargadatos', 'InicioController@cargadatos');
+Route::get('evento/buscardni/{id}', 'InicioController@buscardni');
+Route::get('evento/cargadatos', 'InicioController@cargadatos');
 
 
 // Route::get('/event/inscriptos/{id}','InicioController@inscriptos');
 
-Route::resource('/athlete', 'AthleteController');
-Route::resource('/event','EventController');
+Route::resource('athlete', 'AthleteController');
+Route::resource('event','EventController');
+
+Route::resource('inscripcion','InscripcionController');

@@ -85,35 +85,8 @@
                 <div class="links">
                     <a href="{{ url('event') }}">Eventos</a>
                     <a href="{{ url('athlete') }}">Atleta</a>
-{{--                    <a href="https://laravel-news.com">Atleta</a>
-                    <a href="https://nova.laravel.com">Resultados</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a> --}}
+                    <a href="{{ url('inscripcion') }}">Inscripción</a>
                 </div>
-{{--             <table class="table table-bordered">
-                <thead>
-                  <tr>
-                    <th>Organizador</th>
-                    <th>Deporte</th>
-                    <th>Nombre</th>
-                    <th>Fecha</th>
-                    <th>Inscribirse</th>
-                    <th>Ver</th>
-                  </tr>
-                </thead>
-                <tbody>
-                    @foreach($eventos as $evento)
-                      <tr>
-                        <td>{{ $evento->organizer->nombre }}</td>
-                        <td>{{ $evento->sport->nombre }}</td>
-                        <td>{{ $evento->nombre }}</td>
-                        <td>{{ $evento->fecha }}</td>
-                        <td><button class="btn btn-primary">Inscribirse</button></td>
-                        <td><button class="btn btn-primary">Ver</button></td>
-                      </tr>
-                    @endforeach
-                </tbody>
-            </table> --}}                
             </div>
         </div>
     </body>
