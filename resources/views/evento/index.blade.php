@@ -2,8 +2,10 @@
 
 @section('content')
 <div class="container">
-<h1>Eventos</h1>
-{{ $events->links() }}
+    <h2>
+      Listado de Evento
+      <a href="{{ route('event.create') }}" class="btn btn-primary pull-right">Nuevo</a>
+    </h2>
             <table class="table table-bordered">
                 <thead>
                   <tr>
@@ -12,6 +14,7 @@
                     <th>Nombre</th>
                     <th>Fecha</th>
                     <th>Inscribirse</th>
+                    <th>Editar</th>
                     <th>Lista</th>
                   </tr>
                 </thead>
@@ -22,7 +25,8 @@
                         <td>{{ $event->sport->nombre }}</td>
                         <td>{{ $event->nombre }}</td>
                         <td>{{ $event->fecha }}</td>
-                        <td><a href="{{ url('event/buscardni',$event->id ) }}"><button class="btn btn-primary">Inscribirse</button></a></td>
+                        <td><a href="{{ route('inscripcion.show',$event->id ) }}"><button class="btn btn-primary">Inscribirse</button></a></td>
+                        <td><a href="{{ route('event.edit',$event->id ) }}"><button class="btn btn-primary">Editar</button></a></td>
                         <td><a href="{{ route('event.show',$event->id ) }}"><button class="btn btn-primary">Ver</button></a></td>
                       </tr>
                     @endforeach

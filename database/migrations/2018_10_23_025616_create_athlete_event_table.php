@@ -17,7 +17,10 @@ class CreateAthleteEventTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('athlete_id');
             $table->unsignedInteger('event_id');
-            $table->integer('corredor');
+            $table->integer('numero');
+            $table->integer('categoria');
+            $table->integer('general');
+            $table->boolean('status');
             $table->timestamps();
 
             $table->foreign('athlete_id')->references('id')->on('athletes');

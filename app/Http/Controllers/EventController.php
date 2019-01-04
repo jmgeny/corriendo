@@ -26,7 +26,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view('evento.create');
     }
 
     /**
@@ -61,7 +61,9 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        $event = Event::findOrFail($id);
+
+        return view('evento.edit',compact('event'));
     }
 
     /**

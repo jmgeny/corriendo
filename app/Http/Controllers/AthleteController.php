@@ -15,8 +15,8 @@ class AthleteController extends Controller
     public function index()
     {
         
-        $athletes = Athlete::where('state','=','1')
-                    ->orderBy('apellido','ASC')->paginate(20);
+        $athletes = Athlete::orderBy('apellido','ASC')->paginate(20);
+        // where('state','=',1)->
 
         return view('atleta.index', compact('athletes'));
     }
@@ -112,6 +112,7 @@ class AthleteController extends Controller
         $athlete->genero = $request->genero;
         $athlete->telefono = $request->telefono;
         $athlete->avatar = $request->avatar;
+        $athlete->state = $request->state;
 //imagen
         if($request->file('avatar')) {
             // Necesito el archivo en una variable esta vez
@@ -142,6 +143,6 @@ class AthleteController extends Controller
 
         $athlete->save();
 
-        return back();
+        return back()->with('info','El atleta fue desactivado');
     }
 }

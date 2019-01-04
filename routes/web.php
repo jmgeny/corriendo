@@ -29,7 +29,7 @@ Route::get('evento/cargadatos', 'InicioController@cargadatos');
 
 // Route::get('/event/inscriptos/{id}','InicioController@inscriptos');
 
-Route::resource('athlete', 'AthleteController');
-Route::resource('event','EventController');
-
-Route::resource('inscripcion','InscripcionController');
+Route::resources([
+	'athlete' 		=> 'AthleteController',
+	'event' 		=> 'EventController',
+	'inscripcion' 	=> 'InscripcionController']);

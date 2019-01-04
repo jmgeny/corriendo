@@ -4,6 +4,7 @@ namespace corriendo\Http\Controllers;
 
 use Illuminate\Http\Request;
 use corriendo\Event;
+use corriendo\Athlete;
 
 class InscripcionController extends Controller
 {
@@ -14,9 +15,12 @@ class InscripcionController extends Controller
      */
     public function index()
     {
-        $inscriptos = Event::findOrFail(1);
-        
-        return view('inscripcion.index', compact('inscriptos'));
+
+        $events = Event::orderBy('id','DES')->paginate(10);
+        // $athletes = Athelte::orderBy('id','DES')->paginate(10);
+
+        return view('inscripcion.index', compact('events'));
+
     }
 
     /**
@@ -26,7 +30,9 @@ class InscripcionController extends Controller
      */
     public function create()
     {
-        //
+        $events = Event::orderBy('id','DES')->paginate(5);
+
+        return view('inscripcion.create', compact('events'));
     }
 
     /**
@@ -48,7 +54,13 @@ class InscripcionController extends Controller
      */
     public function show($id)
     {
-        //
+        // $inscriptos = Event::findOrFail($id);
+        
+        
+        
+        return view('inscripcion.show', 
+                    ['inscriptos' => Event::findOrFail($id), 
+                       'athletes' => Athlete::orderBy('apellido','ASC')->paginate(20)]);
     }
 
     /**

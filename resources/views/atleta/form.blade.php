@@ -41,6 +41,11 @@
   <div class="form-group">
   	{!! Form::label('avatar', 'Foto') !!}
   	{!! Form::file('avatar') !!}
+  </div>
+
+  <div class="form-group">
+    {!! Form::label('state','Activo') !!}
+    {!! Form::checkbox('state') !!}
   </div>   
   
   <div class="form-group">
